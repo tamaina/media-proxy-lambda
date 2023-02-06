@@ -6,6 +6,7 @@ import url from "url";
 
 export function init() {
 	const app = fastify();
+	app.get('/', (req, reply) => reply.send('Hello World!'));
 	app.register(MediaProxy);
 	return app;
 }
