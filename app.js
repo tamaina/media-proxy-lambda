@@ -7,6 +7,7 @@ import url from "url";
 export function init() {
 	const app = fastify();
 	app.register(MediaProxy);
+	return app;
 }
 
 if (process.argv[1] === url.fileURLToPath(import.meta.url)) {
