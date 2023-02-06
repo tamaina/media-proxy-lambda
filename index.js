@@ -3,4 +3,5 @@
 import awsLambdaFastify from '@fastify/aws-lambda';
 const init = require('./app');
 
-export const handler = awsLambdaFastify(init())
+const proxy = awsLambdaFastify(init());
+export const handler = (event, context, callback) => proxy(event, context, callback);

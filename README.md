@@ -39,8 +39,9 @@ git clone https://github.com/tamaina/media-proxy-lambda.git
 npm install --target_arch=arm64 --target_platform=linux
 ```
 
-## 7. Deploy
-
+## 7. デプロイ
 ```
 FUNCTION_NAME=media-proxy npm run deploy
 ```
+
+リージョンをaws configureで設定したリージョンではないものに指定するには、AWS_DEFAULT_REGIONまたはAWS_REGIONとして環境変数で指定してください。
