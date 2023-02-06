@@ -5,6 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "rm -rf dist && esbuild ./src/* --entry-names=[dir]/[name]/index --bundle --minify --sourcemap --platform=node --target=node16.14 --outdir=dist",
     "deploy": "echo \"Uploading $FUNCTION_NAME\" && zip -q -r function.zip . -x \"./.git/*\" && aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://function.zip"
   },
   "repository": {

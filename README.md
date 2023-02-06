@@ -20,22 +20,26 @@ https://console.aws.amazon.com/lambda/home#/functions にアクセスします�
 
 |項目|値|
 |:-|:-|
+|モード|一から作成|
 |関数名|media-proxy|
 |アーキテクチャ|arm64|
 |詳細設定/関数URLを有効化|true|
 |認証タイプ|NONE|
 |オリジン間リソース共有を設定|false|
 
-## 4. git clone
+## 4. 関数URLの動作確認
+関数が作成されたら、**関数 URL**のon.awsで終わるリンクにアクセスし、`Hello from Lambda!`と表示されることを確認してください。
+
+## 5. git clone
 git clone https://github.com/tamaina/media-proxy-lambda.git
 
-## 5. npm install
+## 6. npm install
 
 ```
 npm install --target_arch=arm64 --target_platform=linux
 ```
 
-## 6. Deploy
+## 7. Deploy
 
 ```
 FUNCTION_NAME=media-proxy npm run deploy

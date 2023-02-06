@@ -6,6 +6,10 @@ import url from "url";
 
 export function init() {
 	const app = fastify();
+	app.addHook('onRequest', (request, reply, done) => {
+		reply.header('Server', 'Misskey Media Proxy');
+		done();
+	});
 	app.get('/', (req, reply) => reply.send('Hello World!'));
 	app.register(MediaProxy);
 	return app;
