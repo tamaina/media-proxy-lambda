@@ -10,7 +10,10 @@ export function init() {
 		reply.header('Server', 'Misskey Media Proxy');
 		done();
 	});
-	app.get('/', (req, reply) => reply.send('Hello World!'));
+	app.get('/', (req, reply) => {
+		reply.header('content-type', 'text/plain; charset=utf-8')
+		return reply.send('Hello World!')
+	});
 	app.register(MediaProxy);
 	return app;
 }
