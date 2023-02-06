@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "lambda.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "zip -r function.zip . -x \"./.git/*\" && aws lambda update-function-code --function-name media-proxy --zip-file fileb://function.zip"
   },
   "repository": {
     "type": "git",
