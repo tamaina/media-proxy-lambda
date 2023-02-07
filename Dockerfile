@@ -1,4 +1,6 @@
 # https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/images-create.html#images-create-from-base
+# How to Upload: https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/images-create.html#images-upload
+
 FROM public.ecr.aws/lambda/nodejs:18-arm64 as builder
 WORKDIR /${LAMBDA_TASK_ROOT}
 
