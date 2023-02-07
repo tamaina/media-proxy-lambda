@@ -81,7 +81,7 @@ https://console.aws.amazon.com/lambda/home#/create/function?intent=authorFromIma
 |項目|値|
 |:-|:-|
 |メモリ|158MB|
-|タイムアウト|5秒|
+|タイムアウト|10秒|
 
 保存を選択します。
 
@@ -158,7 +158,7 @@ https://console.aws.amazon.com/lambda/home#/create/function?intent=authorFromScr
 |項目|値|
 |:-|:-|
 |メモリ|158MB|
-|タイムアウト|5秒|
+|タイムアウト|10秒|
 
 保存を選択します。
 
