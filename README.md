@@ -1,4 +1,17 @@
 # Media Proxy for Misskey on AWS Lambda
+[Media Proxy for Misskey](https://github.com/misskey-dev/media-proxy)をAWS Lambdaで動かすためのリポジトリです。
+
+**Media Proxy for Misskey**:  
+https://github.com/misskey-dev/media-proxy
+
+## はじめに
+Media ProxyをAWS Lambdaで動かすのはお勧めできません。
+
+- Fediverseサーバーの画像配信は遅延が大きい場合が多いため、時間課金されるAWS Lambdaでは不利
+- 同期的にリクエストが処理されるため、非同期処理ができるNode.jsやFastifyの利点を活かしきれない
+- 無闇矢鱈に叩かれるとクラウド破産する
+
+通常のVPSでサーバーを立てるのは簡単ですので、そちらの方がお得だと思います。
 
 ## X. Dockerでデプロイ
 ### X1. ローカルにDockerをインストール
@@ -67,8 +80,8 @@ https://console.aws.amazon.com/lambda/home#/create/function?intent=authorFromIma
 
 |項目|値|
 |:-|:-|
-|メモリ|256MB|
-|タイムアウト|16秒|
+|メモリ|158MB|
+|タイムアウト|5秒|
 
 保存を選択します。
 
@@ -144,8 +157,8 @@ https://console.aws.amazon.com/lambda/home#/create/function?intent=authorFromScr
 
 |項目|値|
 |:-|:-|
-|メモリ|256MB|
-|タイムアウト|16秒|
+|メモリ|158MB|
+|タイムアウト|5秒|
 
 保存を選択します。
 
