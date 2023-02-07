@@ -61,9 +61,7 @@ FUNCTION_NAME=media-proxy npm run deploy
 コスト節約や応答速度の向上のために、CloudflareやCloudfrontなどのCDNを使用しキャッシュを設定するべきです。
 
 ### A. Cloudfront
-準備中
 
-<!--
 #### A.1. Cloudfrontのディストリビューションを作成
 https://console.aws.amazon.com/cloudfront/v3/home#/distributions/create にアクセスし、Cloudfrontのディストリビューションを作成します。
 
@@ -71,6 +69,9 @@ https://console.aws.amazon.com/cloudfront/v3/home#/distributions/create にア�
 |:-|:-|
 |オリジンドメイン|AWS Lambdaの関数URLのホスト名を入力（https://は含めない）|
 |プロトコル|HTTPSのみ|
+|...|...|
+|キャッシュキーとオリジンリクエスト|Legacy cache settings|
+|クエリ文字列|すべて|
 |...|...|
 |料金クラス|北米、欧州、アジア、中東、アフリカを使用|
 |サポートされている HTTP バージョン|HTTP/2, HTTP/3|
@@ -83,7 +84,7 @@ mediaProxyの指定をdefault.ymlに追記し、Misskeyを再起動してくだ�
 ```yml
 mediaProxy: https://~~~~~.cloudfront.net // ディストリビューションドメイン名を設定します
 ```
--->
+
 ### B. Cloudflare
 インスタンスのCDN/DNSをCloudflareに設定している場合が多いかと思いますので、Cloudflareでのメディアプロキシのキャッシュ方法もご紹介します。
 
