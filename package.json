@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "sudo docker build --network host -t media-proxy .",
+    "build": "sudo docker build --network host -t media-proxy-lambda .",
     "deploy": "echo \"Uploading $FUNCTION_NAME\" && zip -q -r function.zip . -x \"./.git/*\" && aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://function.zip --no-cli-pager"
   },
   "repository": {
