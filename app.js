@@ -2,7 +2,7 @@
 
 import fastify from 'fastify';
 import MediaProxy from 'misskey-media-proxy';
-import url from "url";
+import url from 'url';
 
 export function init() {
 	const app = fastify();
