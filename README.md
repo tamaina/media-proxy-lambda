@@ -57,11 +57,40 @@ FUNCTION_NAME=media-proxy npm run deploy
 
 リージョンをaws configureで設定したリージョンではないものに指定するには、AWS_DEFAULT_REGIONまたはAWS_REGIONとして環境変数で指定してください。
 
-## 9. Cloudflareの設定
-コスト節約や応答速度の向上のためには、CloudflareやCloudfrontなどのCDNでキャッシュを設定するべきです。
+## 9. CDNの設定
+コスト節約や応答速度の向上のために、CloudflareやCloudfrontなどのCDNを使用しキャッシュを設定するべきです。
 
-インスタンスのCDN/DNSをCloudflareに設定している場合が多いかと思いますので、今回はCloudflareでメディアプロキシを公開します。
+### A. Cloudfront
+準備中
 
+<!--
+#### A.1. Cloudfrontのディストリビューションを作成
+https://console.aws.amazon.com/cloudfront/v3/home#/distributions/create にアクセスし、Cloudfrontのディストリビューションを作成します。
+
+|項目|値|
+|:-|:-|
+|オリジンドメイン|AWS Lambdaの関数URLのホスト名を入力（https://は含めない）|
+|プロトコル|HTTPSのみ|
+|...|...|
+|料金クラス|北米、欧州、アジア、中東、アフリカを使用|
+|サポートされている HTTP バージョン|HTTP/2, HTTP/3|
+|標準ログ記録|ともにオフ|
+|説明|Misskey Media Proxy|
+
+#### B.3. Misskeyのdefault.ymlに追記
+mediaProxyの指定をdefault.ymlに追記し、Misskeyを再起動してください。
+
+```yml
+mediaProxy: https://~~~~~.cloudfront.net // ディストリビューションドメイン名を設定します
+```
+-->
+### B. Cloudflare
+インスタンスのCDN/DNSをCloudflareに設定している場合が多いかと思いますので、Cloudflareでのメディアプロキシのキャッシュ方法もご紹介します。
+
+**ただし、Freeプランでは1日10万リクエストまでしか処理できません。**  
+ちょっと割に合わないので、Cloudfrontを使った方が賢明な気がします。
+
+#### B.1. Cloudflare Workersのサービスを作成
 まず、次の内容でCloudflare Workersのサービスを作成してください。  
 サービス画面に移動し、クイック編集（Quick Edit）でワーカーの編集ができます。
 
@@ -75,13 +104,13 @@ export default {
 }
 ```
 
+#### B.2. サービスのカスタムドメインを設定
 トリガータブに移動し、カスタムドメインを追加します。インスタンスのサブドメインが良いかと思います。  
 （ここではmediaproxy.example.comで公開するものとします。）
 
 カスタムドメインの適用には1時間程度〜最大24時間程度かかります。
 
-### 10. Misskeyのdefault.ymlに追記
-
+#### B.3. Misskeyのdefault.ymlに追記
 mediaProxyの指定をdefault.ymlに追記し、Misskeyを再起動してください。
 
 ```yml
