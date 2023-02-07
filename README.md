@@ -56,3 +56,34 @@ FUNCTION_NAME=media-proxy npm run deploy
 ```
 
 リージョンをaws configureで設定したリージョンではないものに指定するには、AWS_DEFAULT_REGIONまたはAWS_REGIONとして環境変数で指定してください。
+
+## 9. Cloudflareの設定
+コスト節約や応答速度の向上のためには、CloudflareやCloudfrontなどのCDNでキャッシュを設定するべきです。
+
+インスタンスのCDN/DNSをCloudflareに設定している場合が多いかと思いますので、今回はCloudflareでメディアプロキシを公開します。
+
+まず、次の内容でCloudflare Workersのサービスを作成してください。  
+サービス画面に移動し、クイック編集（Quick Edit）でワーカーの編集ができます。
+
+```
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    url.host = '/* AWS Lambdaの関数URLのホスト名を入力（https://は含めない） */';
+    return fetch(url);
+  }
+}
+```
+
+トリガータブに移動し、カスタムドメインを追加します。インスタンスのサブドメインが良いかと思います。  
+（ここではmediaproxy.example.comで公開するものとします。）
+
+カスタムドメインの適用には1時間程度〜最大24時間程度かかります。
+
+### 10. Misskeyのdefault.ymlに追記
+
+mediaProxyの指定をdefault.ymlに追記し、Misskeyを再起動してください。
+
+```yml
+mediaProxy: https://mediaproxy.example.com
+```
