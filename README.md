@@ -99,6 +99,10 @@ https://console.aws.amazon.com/lambda/home#/create/function?intent=authorFromIma
 
 CDNの設定を続けてください。
 
+## X9. アップデートするには
+1. docker pull, docker tag, docker pushを行います。
+2. Lambda関数のダッシュボードで 新しいイメージをデプロイ → 保存 と操作します。
+
 ## Y. zipアップロードでデプロイ
 
 ### Y1. AWS IAM アクセスキーの生成
