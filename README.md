@@ -22,10 +22,11 @@ https://console.aws.amazon.com/lambda/home#/functions にアクセスします�
 |:-|:-|
 |モード|一から作成|
 |関数名|media-proxy|
+|ランタイム|Node.js 18.x|
 |アーキテクチャ|arm64|
 |詳細設定/関数URLを有効化|true|
 |認証タイプ|NONE|
-|オリジン間リソース共有を設定|false|
+|オリジン間リソース共有(CORS)を設定|true|
 
 ## 4. 関数URLの動作確認
 関数が作成されたら、**関数 URL**のon.awsで終わるリンクにアクセスし、`Hello from Lambda!`と表示されることを確認してください。
