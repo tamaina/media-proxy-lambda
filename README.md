@@ -5,8 +5,9 @@
 https://github.com/misskey-dev/media-proxy
 
 ## はじめに
-Media ProxyをAWS Lambdaで動かすのはお勧めできません。
+**Media ProxyをAWS Lambdaで動作させるのは全くお勧めできません。**
 
+- **ペイロード上限が6MB**（動画や音声をプロキシできない）
 - Fediverseサーバーの画像配信は遅延が大きい場合が多いため、時間課金されるAWS Lambdaでは不利
 - 同期的にリクエストが処理されるため、非同期処理ができるNode.jsやFastifyの利点を活かしきれない
 - 無闇矢鱈に叩かれるとクラウド破産する
